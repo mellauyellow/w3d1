@@ -18,6 +18,12 @@ require_relative './sqlzoo.rb'
 def null_dept
   # List the teachers who have NULL for their department.
   execute(<<-SQL)
+    SELECT
+      name
+    FROM
+      teachers
+    WHERE
+      dept_id IS NULL
   SQL
 end
 
@@ -25,6 +31,8 @@ def all_teachers_join
   # Use a type of JOIN that will list all teachers and their department,
   # even if the department in NULL/nil.
   execute(<<-SQL)
+    SELECT
+      name, depts.name
   SQL
 end
 
